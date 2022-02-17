@@ -10,7 +10,10 @@ public class StudyGroupFaker : Faker<StudyGroup>
     public StudyGroupFaker()
     {
         // TODO: Proper StudyCourse seeding injection
-        CustomInstantiator(f => new StudyGroup(MakeGroupName(f).Name, null) {Id = GetId() });
+        CustomInstantiator(f => new StudyGroup(
+            MakeGroupName(f).Name,
+            new StudyCourse(StudentGraduationYear.Y22, 
+                new StudyProgram(f.Random.String()))) {Id = GetId() });
     }
 
     private int GetId()
